@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CGPA To Percentage</title>
+    <style>
+        #inpcgpa {
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="number" max="10" min="0" id="inpcgpa" placeholder="Enter CGPA">
+    <p id="resultp"></p>
+</body>
+<script>
+    const inpcgpa = document.getElementById('inpcgpa');
+    const resultp = document.getElementById("resultp");
+    function calCGPA() {
+        const cgpa = inpcgpa.value;
+        if (cgpa === NaN || cgpa > 10 || cgpa < 0) {
+            resultp.innerText = "Enter Valid CGPA";
+            return
+        }
+        let percent;
+        cgpa >= 7 ?
+            percent = 7.4 * cgpa + 12 :
+            percent = 7.1 * cgpa + 12;
+        resultp.innerText = `Percentage ${percent}`;
+    }
+    inpcgpa.addEventListener('keyup', () => {
+        if (inpcgpa.value == '') {
+            resultp.innerText = '';
+            return 
+        }
+        calCGPA();
+    })
+</script>
+
+</html>
